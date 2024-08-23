@@ -519,13 +519,26 @@ class CDM_CLASS_API VideoFrame {
 class CDM_CLASS_API VideoFrame_2 {
  public:
   virtual void SetFormat(VideoFormat format) = 0;
+  virtual VideoFormat Format() const = 0;
+
   virtual void SetSize(cdm::Size size) = 0;
+  virtual cdm::Size Size() const = 0;
+
   virtual void SetFrameBuffer(Buffer* frame_buffer) = 0;
+  virtual Buffer* FrameBuffer() = 0;
+
   virtual void SetPlaneOffset(VideoPlane plane, uint32_t offset) = 0;
+  virtual uint32_t PlaneOffset(VideoPlane plane) = 0;
+
   virtual void SetStride(VideoPlane plane, uint32_t stride) = 0;
-  // Sets the presentation timestamp which is in microseconds.
+  virtual uint32_t Stride(VideoPlane plane) = 0;
+
+  // Sets and gets the presentation timestamp which is in microseconds.
   virtual void SetTimestamp(int64_t timestamp) = 0;
+  virtual int64_t Timestamp() const = 0;
+
   virtual void SetColorSpace(ColorSpace color_space) = 0;
+  virtual ColorSpace ColorSpace() const = 0;
 
  protected:
   VideoFrame_2() {}
