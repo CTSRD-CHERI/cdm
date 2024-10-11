@@ -641,6 +641,15 @@ class CDM_CLASS_API FileIOClient {
   virtual ~FileIOClient() {}
 };
 
+// Metrics that will be reported from the CDM through the ReportMetrics
+// function. To add a metric, please add to the end of this enum list, and
+// update the code in Chromium accordingly. Ordering for this does matter.
+enum MetricName : uint32_t {
+  kSdkVersion,
+  kCertificateSerialNumber,
+};
+CHECK_TYPE(MetricName, 4, 4);
+
 class CDM_CLASS_API Host_10;
 class CDM_CLASS_API Host_11;
 
@@ -1356,6 +1365,11 @@ class CDM_CLASS_API Host_11 {
   // should not be supported or returned by the host. The CDM must not expose
   // the ID outside the client device, even in encrypted form.
   virtual void RequestStorageId(uint32_t version) = 0;
+
+  // Reports the metric |metric_name| with value |value| to the host. Can be
+  // called by the CDM at any time. May report the same metric multiple times
+  // during the lifetime of the CDM.
+  virtual void ReportMetrics(MetricName metric_name, uint64_t value) = 0;
 
  protected:
   Host_11() {}
