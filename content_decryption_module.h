@@ -647,6 +647,7 @@ class CDM_CLASS_API FileIOClient {
 enum MetricName : uint32_t {
   kSdkVersion,
   kCertificateSerialNumber,
+  kDecoderBypassBlockCount,
 };
 CHECK_TYPE(MetricName, 4, 4);
 
