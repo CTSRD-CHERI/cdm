@@ -964,12 +964,8 @@ class CDM_CLASS_API ContentDecryptionModule_11 {
                             const char* session_id,
                             uint32_t session_id_size) = 0;
 
-  // Removes any stored session data associated with this session. Removes all
-  // license(s) and key(s) associated with the session, whether they are in
-  // memory, persistent store, or both. For persistent session types, other
-  // session data (e.g. record of license destruction) will be cleared as
-  // defined for each session type once a release message acknowledgment is
-  // processed by UpdateSession(). The CDM must respond by calling either
+  // Removes any stored session data associated with this session. Will only be
+  // called for persistent sessions. The CDM must respond by calling either
   // Host::OnResolvePromise() or Host::OnRejectPromise() when the request has
   // been processed.
   virtual void RemoveSession(uint32_t promise_id,
@@ -1016,7 +1012,7 @@ class CDM_CLASS_API ContentDecryptionModule_11 {
   // decoder at this time. Must call Host::OnDeferredInitializationDone() once
   // initialization is complete.
   virtual Status InitializeVideoDecoder(
-      const VideoDecoderConfig_3& video_decoder_config) = 0;
+      const VideoDecoderConfig_2& video_decoder_config) = 0;
 
   // De-initializes the CDM decoder and sets it to an uninitialized state. The
   // caller can initialize the decoder again after this call to re-initialize
@@ -1045,7 +1041,7 @@ class CDM_CLASS_API ContentDecryptionModule_11 {
   // If the return value is not kSuccess, |video_frame| should be ignored by
   // the caller.
   virtual Status DecryptAndDecodeFrame(const InputBuffer_2& encrypted_buffer,
-                                       VideoFrame_2* video_frame) = 0;
+                                       VideoFrame* video_frame) = 0;
 
   // Decrypts the |encrypted_buffer| and decodes the decrypted buffer into
   // |audio_frames|. Upon end-of-stream, the caller should call this function
