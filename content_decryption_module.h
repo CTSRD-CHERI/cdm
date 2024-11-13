@@ -1729,6 +1729,11 @@ class CDM_CLASS_API Host_12 {
   // the ID outside the client device, even in encrypted form.
   virtual void RequestStorageId(uint32_t version) = 0;
 
+  // Reports the metric |metric_name| with value |value| to the host. Can be
+  // called by the CDM at any time. May report the same metric multiple times
+  // during the lifetime of the CDM.
+  virtual void ReportMetrics(MetricName metric_name, uint64_t value) = 0;
+
  protected:
   Host_12() {}
   virtual ~Host_12() {}
