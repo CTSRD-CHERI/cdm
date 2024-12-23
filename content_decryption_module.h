@@ -641,9 +641,11 @@ class CDM_CLASS_API FileIOClient {
   virtual ~FileIOClient() {}
 };
 
-// Metrics that will be reported from the CDM through the ReportMetrics
-// function. To add a metric, please add to the end of this enum list, and
-// update the code in Chromium accordingly. Ordering for this does matter.
+// Metrics that will be reported from the CDM through the ReportMetrics()
+// function. To add a new metric, please add it to the end of this enum list
+// without changing any existing enum values.
+// Note: For forward compatibility, Host implementations must gracefully handle
+// unexpected (new) enum values, e.g. no-op.
 enum MetricName : uint32_t {
   kSdkVersion,
   kCertificateSerialNumber,
