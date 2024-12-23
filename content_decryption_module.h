@@ -877,8 +877,6 @@ class CDM_CLASS_API ContentDecryptionModule_10 {
   virtual ~ContentDecryptionModule_10() {}
 };
 
-// ----- Note: CDM interface(s) below still in development and not stable! -----
-
 // ContentDecryptionModule interface that all CDMs need to implement.
 // The interface is versioned for backward compatibility.
 // Note: ContentDecryptionModule implementations must use the allocator
@@ -888,7 +886,7 @@ class CDM_CLASS_API ContentDecryptionModule_10 {
 class CDM_CLASS_API ContentDecryptionModule_11 {
  public:
   static const int kVersion = 11;
-  static const bool kIsStable = false;
+  static const bool kIsStable = true;
   typedef Host_11 Host;
 
   // Initializes the CDM instance, providing information about permitted
@@ -1098,6 +1096,8 @@ class CDM_CLASS_API ContentDecryptionModule_11 {
   ContentDecryptionModule_11() {}
   virtual ~ContentDecryptionModule_11() {}
 };
+
+// ----- Note: CDM interface(s) below still in development and not stable! -----
 
 // ContentDecryptionModule interface that all CDMs need to implement.
 // The interface is versioned for backward compatibility.
