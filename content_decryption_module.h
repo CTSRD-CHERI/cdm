@@ -437,8 +437,7 @@ CHECK_TYPE(InitDataType, 4, 4);
 // https://w3c.github.io/encrypted-media/#dom-mediakeysessiontype
 enum SessionType : uint32_t {
   kTemporary = 0,
-  kPersistentLicense = 1,
-  kPersistentUsageRecord = 2
+  kPersistentLicense = 1
 };
 CHECK_TYPE(SessionType, 4, 4);
 
