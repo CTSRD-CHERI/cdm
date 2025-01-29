@@ -369,7 +369,7 @@ CHECK_TYPE(KeyStatus, 4, 4);
 // Note: For forward compatibility, Host implementations must gracefully handle
 // unexpected (new) enum values, e.g. no-op. This is used by the CDM Interfaces
 // starting from CDM_12.
-enum KeyStatus_2 : uint32_t {
+enum class KeyStatus_2 : uint32_t {
   kUsable = 0,
   kInternalError = 1,
   kExpired = 2,
